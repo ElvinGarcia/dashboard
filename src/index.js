@@ -17,10 +17,10 @@ const store = configureStore({reducer:rootReducer});
 // returns an object with a render function
 const root = createRoot(document.querySelector('#root'));
 root.render(
-  <Provider store={store}>
-<BrowserRouter>
-      <App />
-</BrowserRouter>
+<Provider store={store}>
+  <BrowserRouter>
+    <App />
+  </BrowserRouter>
 </Provider>
   )
 

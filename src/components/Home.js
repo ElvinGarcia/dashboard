@@ -1,10 +1,14 @@
 import React from "react"
-
+import Header from './Header'
+import Footer from './Footer'
 
 
 const Home = () => {
   return (
-    <p>testing testing testing testing</p>
+    <>
+    <Header/>
+    <Footer/>
+    </>
   );
 };
 

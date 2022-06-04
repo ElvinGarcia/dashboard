@@ -1,8 +1,12 @@
 import React from "react"
 
+
+
 const Footer = () => {
   return (
-    <p>Footer Footer Footer Footer</p>
+    <div>
+    <p>Footer</p>
+  </div>
   );
 };
 
