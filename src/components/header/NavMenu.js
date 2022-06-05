@@ -10,13 +10,12 @@ class NavMenu extends Component{
     };
 
     return (
-      <li>
+      <li className="nav-item">
         <NavLink
           to={this.props.url}
           style={({ isActive }) => isActive ? activeStyle : undefined}
-          end
+          className="nav-link"
         >
-
           {this.props.name}
         </NavLink>
       </li>
