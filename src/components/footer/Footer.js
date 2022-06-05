@@ -15,7 +15,7 @@ class Footer extends Component{
     ]
    const  menu = ListItems.map((item, index) => (<FooterMenu key={index} name={item.name} url={item.url} />))
     return (
-      <ul>
+      <ul className="navbar navbar-expand-lg bg-light">
         {menu}
       </ul>
     );

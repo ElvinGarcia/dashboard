@@ -5,9 +5,10 @@ import { NavLink } from "react-router-dom";
 class FooterMenu extends Component{
   render() {
     return (
-      <li>
+      <li className="nav-item">
       <NavLink
-      to={this.props.name}
+          to={this.props.name}
+          className="nav-link"
       >
         {this.props.name}
         </NavLink>
