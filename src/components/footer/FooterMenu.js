@@ -1,19 +1,34 @@
 import React, { Component } from "react";
-import { NavLink } from "react-router-dom";
+import { NavLink, Link } from "react-router-dom";
 
 
 class FooterMenu extends Component{
+
   render() {
-    return (
-      <li className="nav-item">
-      <NavLink
-          to={this.props.name}
-          className="nav-link"
-      >
-        {this.props.name}
-        </NavLink>
-        </li>
-    )
+
+    if (Array.isArray(this.props.url)) {
+      return this.props.url.map((url, index) => (
+        <li className="nav-item">
+          <a href={url} target="_blank" rel="noreferrer" class="nav-link">
+          {url}
+        </a>
+          </li>
+
+     ))
+
+    } else {
+      return (
+        <li className="nav-item">
+        <NavLink
+            to={this.props.name}
+            className="nav-link"
+        >
+          {this.props.name}
+          </NavLink>
+          </li>
+      )
+    }
+
   }
 }
 

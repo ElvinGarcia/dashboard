@@ -5,15 +5,12 @@ import { NavLink } from "react-router-dom";
 class NavMenu extends Component{
 
   render() {
-    let activeStyle = {
-      textDecoration: "underline",
-    };
+
 
     return (
       <li className="nav-item">
         <NavLink
           to={this.props.url}
-          style={({ isActive }) => isActive ? activeStyle : undefined}
           className="nav-link"
         >
           {this.props.name}
