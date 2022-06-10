@@ -8,7 +8,7 @@ import Dashboard from './components/dashboard/Dashboard'
 
 function App() {
   return (
-    <div>
+    <>
       <Routes>
         <Route path="/" element={<Layout />}>
         <Route index element={<Dashboard />}/>
@@ -17,7 +17,7 @@ function App() {
           <Route path="*" element={<p>~~Nothing to see here ~~</p> }/>
         </Route>
       </Routes>
-    </div>
+    </>
   );
 }
 

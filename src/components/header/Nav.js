@@ -28,7 +28,7 @@ class Nav extends Component {
   ]
     const menu = menuItems.map((item, index) => (<NavMenu key={index} name={item.name} url={item.url} />))
     return (
-      <ul className="nav nav-tabs">
+      <ul className="nav nav-tabs navbar-dark bg-dark">
         {menu}
       </ul>
     );
