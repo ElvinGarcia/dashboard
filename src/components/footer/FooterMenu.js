@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { NavLink, Link } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 
 
 class FooterMenu extends Component{
@@ -9,7 +9,7 @@ class FooterMenu extends Component{
     if (Array.isArray(this.props.url)) {
       return this.props.url.map((url, index) => (
         <li className="nav-item">
-          <a href={url} target="_blank" rel="noreferrer" class="nav-link">
+          <a href={url} target="_blank" rel="noreferrer" className="nav-link">
           {url}
         </a>
           </li>
