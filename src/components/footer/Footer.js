@@ -14,7 +14,7 @@ class Footer extends Component{
         url:['https://twitter.com','https://linkedin.com']
       },
     ]
-    const menu = ListItems.map((item, index) => (<FooterMenu key={index} name={item.name} url={item.url} obj2={item}/>))
+    const menu = ListItems.map((item,id) => (<FooterMenu key={id} name={item.name} url={item.url} obj2={item}/>))
     return (
       <ul className="navbar navbar-expand-lg bg-light">
         {menu}

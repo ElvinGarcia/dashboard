@@ -1,16 +1,38 @@
-import React from "react"
+import React, { Component } from "react"
 import { connect } from "react-redux";
 import {fetchReddit} from "../../actions/reddit"
 
-const Dashboard = () => {
-  return (
-    <p>Dashboard Goes Here</p>
-  );
-};
+class Dashboard extends Component {
 
-const mapStateToProps = (state)=>{
+  componentDidMount() {
+    console.log(this.props)
+    this.props.fetchReddit()
+  }
+
+  render() {
+    //  this.props.reddit =  { reddit: [], loading: true }
+    const handleLoading = ()=> {
+      if (this.props.reddit.loading) {
+          return <span>'🐢 🐢 🐢 🐢 🐢 🐢 🐢 🐢 🐢 🐢 🐢 🐢 🐢'</span>
+      } else {
+        return <p> ready to display data</p>
+        //this.props.reddit // this is an Array
+      }
+
+    }
+
+    return (
+    <>
+    {handleLoading()}
+    </>
+  )
+}
+
+}
+
+const mapStateToProps = (state) => {
   return {
-    state
+    reddit: state
   }
 }
 
