@@ -4,8 +4,8 @@ import { BrowserRouter } from 'react-router-dom'; // use for routing
 import { configureStore } from '@reduxjs/toolkit'; // replaces createStore.
 import { Provider } from 'react-redux'; // use to pass state between components and containers
 import rootReducer from "./reducers/rootReducer"; // main state reducer
-
 import App from './App';
+
 
 // The slice reducers were automatically passed to combineReducers()
 // The redux-thunk middleware was automatically added

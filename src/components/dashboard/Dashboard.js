@@ -15,6 +15,8 @@ class Dashboard extends Component {
       if (this.props.reddit.loading) {
           return <span>'🐢 🐢 🐢 🐢 🐢 🐢 🐢 🐢 🐢 🐢 🐢 🐢 🐢'</span>
       } else {
+        // here I need to return a component with a list of reddit titles by passing in
+        // reddit_objs to it and return a <ul><li><li><li>with all the titles.
         return <p> ready to display data</p>
         //this.props.reddit // this is an Array
       }
@@ -32,7 +34,8 @@ class Dashboard extends Component {
 
 const mapStateToProps = (state) => {
   return {
-    reddit: state
+    reddit_objs: state.reddit,
+    reddit: state,
   }
 }
 
