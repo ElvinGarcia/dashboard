@@ -1,11 +1,11 @@
 import React, { Component } from "react"
 import { connect } from "react-redux";
+import Rss from "../feedComponent/rss";
 import {fetchReddit} from "../../actions/reddit"
 
 class Dashboard extends Component {
 
   componentDidMount() {
-    console.log(this.props)
     this.props.fetchReddit()
   }
 
@@ -13,20 +13,53 @@ class Dashboard extends Component {
     //  this.props.reddit =  { reddit: [], loading: true }
     const handleLoading = ()=> {
       if (this.props.reddit.loading) {
-          return <span>'🐢 🐢 🐢 🐢 🐢 🐢 🐢 🐢 🐢 🐢 🐢 🐢 🐢'</span>
+        return(
+        <div className="container">
+        <div className="spinner-grow text-primary" role="status">
+  <span className="visually-hidden">Loading...</span>
+</div>
+<div className="spinner-grow text-secondary" role="status">
+  <span className="visually-hidden">Loading...</span>
+</div>
+<div className="spinner-grow text-success" role="status">
+  <span className="visually-hidden">Loading...</span>
+</div>
+<div className="spinner-grow text-danger" role="status">
+  <span className="visually-hidden">Loading...</span>
+</div>
+<div className="spinner-grow text-warning" role="status">
+  <span className="visually-hidden">Loading...</span>
+</div>
+<div className="spinner-grow text-info" role="status">
+  <span className="visually-hidden">Loading...</span>
+</div>
+<div className="spinner-grow text-light" role="status">
+  <span className="visually-hidden">Loading...</span>
+</div>
+<div className="spinner-grow text-dark" role="status">
+  <span className="visually-hidden">Loading...</span>
+          </div>
+          </div>)
+
       } else {
+        return this.props.reddit_objs.map(obj => (
+          <Rss key={obj.data.id} title={obj.data.title} url={obj.data.url} />
+        ))
+
         // here I need to return a component with a list of reddit titles by passing in
         // reddit_objs to it and return a <ul><li><li><li>with all the titles.
-        return <p> ready to display data</p>
+
         //this.props.reddit // this is an Array
       }
 
     }
 
     return (
-    <>
+      <div className="container">
+    <ul>
     {handleLoading()}
-    </>
+        </ul>
+        </div>
   )
 }
 
