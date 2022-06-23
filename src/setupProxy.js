@@ -12,6 +12,17 @@ module.exports = function (app) {
       }
     })
   );
+
+  app.use(
+    "/topstories.json",
+    createProxyMiddleware({
+      target: "https://hacker-news.firebaseio.com/v0",
+      changeOrigin: true,
+      cookieDomainRewrite: {
+        "*": ""
+      }
+    })
+  );
 };
 
 
