@@ -1,6 +1,6 @@
 
 
-export default function rootReducer(state ={ reddit: [], loading: false}, action){
+export default function rootReducer(state ={ reddit: [], HN:[], loading: false}, action){
 
   switch (action.type) {
 
@@ -10,6 +10,11 @@ export default function rootReducer(state ={ reddit: [], loading: false}, action
     case 'ADD_REDDIT':
       return {...state, reddit: action.arrayOfObjects, loading: false,}
 
+    case 'LOADING_HN':
+        return {...state, HN: [...state.HN], loading: true,};
+
+    case 'ADD_HN':
+        return {...state, HN: action.arrayOfObjects, loading: false,}
 
     default:
       return state;
