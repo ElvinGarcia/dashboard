@@ -1,23 +1,11 @@
+import { combineReducers } from 'redux';
+import reddit from './reddit';
+import hackerNews from './hackerNews'
+
+export default  combineReducers({reddit, hackerNews})
 
 
-export default function rootReducer(state ={ reddit: [], HN:[], loading: false}, action){
 
-  switch (action.type) {
 
-    case 'LOADING_REDDIT':
-      return {...state, reddit: [...state.reddit], loading: true,};
-
-    case 'ADD_REDDIT':
-      return {...state, reddit: action.arrayOfObjects, loading: false,}
-
-    case 'LOADING_HN':
-        return {...state, HN: [...state.HN], loading: true,};
-
-    case 'ADD_HN':
-        return {...state, HN: action.arrayOfObjects, loading: false,}
-
-    default:
-      return state;
-  }
-}
-
+// (alias) function combineReducers<S>(reducers: ReducersMapObject<S, any>): Reducer<CombinedState<S>> (+2 overloads)
+// import combineReducers
