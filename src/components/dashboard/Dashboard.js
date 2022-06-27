@@ -1,59 +1,27 @@
 import React, { Component } from "react"
 import { connect } from "react-redux";
 import Rss from "../feedComponent/rss";
+import {loadingAnimation} from "../body/loading"
 import { fetchReddit } from "../../actions/reddit";
-import { fetchHN } from "../../actions/hackerNews";
+import { fetchHackerNews } from "../../actions/hackerNews";
 
 class Dashboard extends Component {
 
   componentDidMount() {
-    this.props.fetchReddit();
-    this.props.fetchHN()
+    // this.props.fetchReddit();
+     this.props.fetchHackerNews()
   }
 
   render() {
     //  this.props.reddit =  { reddit: [], loading: true }
+    //  this.props.hackerNews. =  { reddit: [], loading: true }
     const handleLoading = () => {
-
-      if (this.props.reddit.loading) {
-        return(
-        <div className="container-fluid">
-        <div className="spinner-grow text-primary" role="status">
-  <span className="visually-hidden">Loading...</span>
-      </div>
-      <div className="spinner-grow text-secondary" role="status">
-        <span className="visually-hidden">Loading...</span>
-      </div>
-      <div className="spinner-grow text-success" role="status">
-        <span className="visually-hidden">Loading...</span>
-      </div>
-      <div className="spinner-grow text-danger" role="status">
-        <span className="visually-hidden">Loading...</span>
-      </div>
-      <div className="spinner-grow text-warning" role="status">
-        <span className="visually-hidden">Loading...</span>
-      </div>
-      <div className="spinner-grow text-info" role="status">
-        <span className="visually-hidden">Loading...</span>
-      </div>
-      <div className="spinner-grow text-light" role="status">
-        <span className="visually-hidden">Loading...</span>
-      </div>
-      <div className="spinner-grow text-dark" role="status">
-        <span className="visually-hidden">Loading...</span>
-                </div>
-          </div>)
-
+      if (this.props.hackerNews.loading ) {
+        return loadingAnimation();
       } else {
-        // console.log(this.props.reddit_objs)
-        return this.props.reddit_objs.map(obj => (
-          <Rss key={obj.data.id} title={obj.data.title} url={obj.data.url} />
-        ))
-
-        // here I need to return a component with a list of reddit titles by passing in
-        // reddit_objs to it and return a <ul><li><li><li>with all the titles.
-
-        //this.props.reddit // this is an Array
+        const data = this.props.hackerNews.data;
+        return data.map(obj => <Rss key={obj.id} title={obj.title} url={obj.url}/>
+        )
       }
 
     }
@@ -71,10 +39,10 @@ class Dashboard extends Component {
 
 const mapStateToProps = (state) => {
   return {
-    reddit_objs: state.reddit,
-    reddit: state,
+    hackerNews: state.hackerNews, //this.state.hackerNews.data
+    reddit: state.reddit, //this.state.reddit.data
   }
 }
 
 
-export default connect(mapStateToProps,{fetchReddit, fetchHN})(Dashboard)
+export default connect(mapStateToProps,{fetchReddit, fetchHackerNews})(Dashboard)

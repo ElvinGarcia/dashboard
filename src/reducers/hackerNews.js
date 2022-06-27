@@ -1,20 +1,20 @@
 
 
-export default function hackerNews(state ={ reddit: [], HN:[], loading: false}, action){
+export default function hackerNews(state ={ data:[], loading: false}, action){
 
   switch (action.type) {
 
     case 'LOADING_REDDIT':
-      return {...state, reddit: [...state.reddit], loading: true,};
+      return {...state, data: [...state.data], loading: true,};
 
     case 'ADD_REDDIT':
-      return {...state, reddit: action.arrayOfObjects, loading: false,}
+      return {...state, data: action.arrayOfObjects, loading: false,}
 
     case 'LOADING_HN':
-        return {...state, HN: [...state.HN], loading: true,};
+        return {...state, data: [...state.data], loading: true,};
 
     case 'ADD_HN':
-        return {...state, HN: action.arrayOfObjects, loading: false,}
+        return {...state, data: action.arrayOfObjects, loading: false,}
 
     default:
       return state;

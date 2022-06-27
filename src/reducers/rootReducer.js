@@ -2,7 +2,7 @@ import { combineReducers } from 'redux';
 import reddit from './reddit';
 import hackerNews from './hackerNews'
 
-export default  combineReducers({reddit, hackerNews})
+export default combineReducers( { reddit, hackerNews })
 
 
 

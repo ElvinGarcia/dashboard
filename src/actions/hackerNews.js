@@ -9,7 +9,7 @@ const topstoriesEndPoint = '/topstories.json' // returns a list of ID
 // const postEndPoint = 'https://hacker-news.firebaseio.com/v0/item/story_id.json?print=pretty' // returns a json of posts
 
 
-export function fetchHN() {
+export function fetchHackerNews() {
   const obj = {
     method: "GET",
     headers: {
@@ -27,17 +27,14 @@ export function fetchHN() {
  };
 }
 
-function getStories(ids, dispatch) {
-  const stories = [];
-  ids.map(id => {
-    return fetch(`https://hacker-news.firebaseio.com/v0/item/${id}.json?print=pretty`)
-      .then(story => story.json())
-      .then(story =>stories.push(story))
-  }).then(dispatch({
+async function getStories(ids, dispatch) {
+  const stories = await Promise.all(ids.map(async (id) => await fetch(`https://hacker-news.firebaseio.com/v0/item/${id}.json?print=pretty`).then(resp => resp.json())));
+
+  dispatch({
     type: 'ADD_HN',
     loading: false,
     arrayOfObjects: stories
-  }))
+  })
 
 };
 
