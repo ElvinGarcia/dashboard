@@ -10,7 +10,6 @@ class Dashboard extends Component {
   componentDidMount() {
     this.props.fetchHackerNews();
     this.props.fetchReddit();
-
   }
 
   render() {
