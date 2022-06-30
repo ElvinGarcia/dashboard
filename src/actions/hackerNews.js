@@ -18,7 +18,7 @@ export function fetchHackerNews() {
   }
 
    return  (dispatch) => {
-    dispatch({ type: 'LOADING_REDDIT', loading: true });// should indicate that the data is loading
+    dispatch({ type: 'LOADING_HN', loading: true });// should indicate that the data is loading
 
      fetch(topstoriesEndPoint, obj)
        .then(resp => resp.json())
