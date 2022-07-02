@@ -20,7 +20,7 @@ class FeedMenu extends Component{
     return (
       <span className="dropdown">
       <button
-        className="btn btn-secondary dropdown-toggle"
+        className="btn btn-light dropdown-toggle"
         type="button"
         id="dropdownMenuButton1"
         data-bs-toggle="dropdown"

@@ -2,31 +2,23 @@
 
 export  const  loadingAnimation = () => {
   return (
-  <div className="container-fluid">
-    <div className="spinner-grow text-primary" role="status">
-      <span className="visually-hidden">Loading...</span>
-    </div>
-    <div className="spinner-grow text-secondary" role="status">
-      <span className="visually-hidden">Loading...</span>
-    </div>
-    <div className="spinner-grow text-success" role="status">
-      <span className="visually-hidden">Loading...</span>
-    </div>
-    <div className="spinner-grow text-danger" role="status">
-      <span className="visually-hidden">Loading...</span>
-    </div>
-    <div className="spinner-grow text-warning" role="status">
-      <span className="visually-hidden">Loading...</span>
-    </div>
-    <div className="spinner-grow text-info" role="status">
-      <span className="visually-hidden">Loading...</span>
-    </div>
-    <div className="spinner-grow text-light" role="status">
-      <span className="visually-hidden">Loading...</span>
-    </div>
-    <div className="spinner-grow text-dark" role="status">
-      <span className="visually-hidden">Loading...</span>
-    </div>
-  </div>
+  <>
+    <ul className="col-sm-4 list-group placeholder-wave" aria-hidden={true}>
+        <li className="list-group-item placeholder col-14 placeholder-lg  bg-primary"></li>
+        <li className="list-group-item placeholder col-13 placeholder-lg  bg-secondary"></li>
+        <li className="list-group-item placeholder col-12 placeholder-lg  bg-success"></li>
+        <li className="list-group-item placeholder col-11 placeholder-lg  bg-danger"></li>
+        <li className="list-group-item placeholder col-10 placeholder-lg  bg-warning"></li>
+        <li className="list-group-item placeholder col-9 placeholder-lg  bg-info"></li>
+        <li className="list-group-item placeholder col-8 placeholder-lg  bg-dark"></li>
+        <li className="list-group-item placeholder col-7 placeholder-lg  bg-primary"></li>
+        <li className="list-group-item placeholder col-6 placeholder-lg  bg-secondary"></li>
+        <li className="list-group-item placeholder col-10 placeholder-lg  bg-success"></li>
+        <li className="list-group-item placeholder col-4 placeholder-lg  bg-danger"></li>
+        <li className="list-group-item placeholder col-08 placeholder-lg  bg-warning"></li>
+        <li className="list-group-item placeholder col-12 placeholder-lg  bg-info"></li>
+        <li className="list-group-item placeholder col-1 placeholder-lg  bg-dark"></li>
+    </ul>
+    </>
   )
 }

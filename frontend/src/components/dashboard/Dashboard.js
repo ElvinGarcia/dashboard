@@ -24,6 +24,7 @@ class Dashboard extends Component {
     }
 
     const loadHackerNews =()=>{
+
       if (this.props.hackerNews.loading) {
         return loadingAnimation();
       } else {
