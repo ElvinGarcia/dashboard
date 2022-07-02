@@ -35,12 +35,12 @@ class Dashboard extends Component {
       if (this.props.reddit.loading) {
        return loadingAnimation();
       } else {
-        return <ol>{this.props.reddit.data.map(obj => <Rss key={obj.data.id} url={obj.data.url} title={obj.data.title} />)}</ol>
+        return <ol className="col-sm-4">{this.props.reddit.data.map(obj => <Rss key={obj.data.id} url={obj.data.url} title={obj.data.title} />)}</ol>
       }
     }
 
     return (
-      <div className="container">
+      <div className="row">
         {handleLoading()}
         </div>
   )
