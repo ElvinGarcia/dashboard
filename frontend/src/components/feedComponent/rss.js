@@ -29,9 +29,6 @@ class Rss extends Component{
         </a>
       </li>
       }
-
-
-
   };
 }
 
