@@ -35,7 +35,7 @@ class Dashboard extends Component {
       if (this.props.reddit.loading) {
        return loadingAnimation();
       } else {
-        return <ol className="col-sm-4">{this.props.reddit.data.map(obj => <Rss key={obj.data.id} url={obj.data.url} title={obj.data.title} />)}</ol>
+        return <ul className="col-sm-4 list-group">{this.props.reddit.data.map(obj => <Rss key={obj.data.id} url={obj.data.url} title={obj.data.title} />)}</ul>
       }
     }
 
