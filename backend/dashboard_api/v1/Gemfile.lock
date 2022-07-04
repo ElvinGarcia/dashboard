@@ -69,6 +69,7 @@ GEM
     bootsnap (1.12.0)
       msgpack (~> 1.2)
     builder (3.2.4)
+    coderay (1.1.3)
     concurrent-ruby (1.1.10)
     crass (1.0.6)
     debug (1.5.0)
@@ -110,6 +111,9 @@ GEM
     nio4r (2.5.8)
     nokogiri (1.13.6-x86_64-darwin)
       racc (~> 1.4)
+    pry (0.14.1)
+      coderay (~> 1.1)
+      method_source (~> 1.0)
     puma (5.6.4)
       nio4r (~> 2.0)
     racc (1.6.0)
@@ -162,6 +166,7 @@ PLATFORMS
 DEPENDENCIES
   bootsnap
   debug
+  pry
   puma (~> 5.0)
   rails (~> 7.0.3)
   sqlite3 (~> 1.4)
