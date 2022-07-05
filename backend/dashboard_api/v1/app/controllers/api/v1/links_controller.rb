@@ -1,4 +1,4 @@
-class LinksController < ApplicationController
+class Api::V1::LinksController < ApplicationController
   before_action :set_link, only: %i[ show update destroy ]
 
   # GET /links

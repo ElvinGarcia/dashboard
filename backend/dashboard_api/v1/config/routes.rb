@@ -1,7 +1,13 @@
 Rails.application.routes.draw do
-  resources :links
-  resources :comments
-  resources :users
+  namespace :api do
+    namespace :v1 do
+      resources :links
+      resources :comments
+      resources :users
+      resources :login, to: 'session#login'
+    end
+  end
+
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
   # Defines the root path route ("/")
