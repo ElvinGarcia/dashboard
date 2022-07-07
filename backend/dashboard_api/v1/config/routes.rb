@@ -5,10 +5,15 @@ Rails.application.routes.draw do
       resources :comments
       resources :users
       resources :login, to: 'session#login'
+      get 'reddit.com/r/popular.json', to: 'session#reddit'
+      get 'hacker-news.firebaseio.com/v0/topstories.json', to: 'session#hackerNews'
     end
   end
 
+
+
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
+
 
   # Defines the root path route ("/")
   # root "articles#index"
