@@ -4,18 +4,26 @@ class Api::V1::SessionController < ApplicationController
   end
 
   def reddit
-    # base_req = request.original_url.partition(request.base_url+"/api/v1/").last
-    # response = HTTParty.get('https://www.reddit.com/r/popular.json')
-    response = HTTParty.get('http://www.reddit.com/r/popular.json')
+    response = HTTParty.get("#{ENV["REDDIT_API"]}")
+   if response.code == 200
     render :json => response
+   elsif
+    puts "Reddit : response code : #{response.code}, response message: #{response.message}"
+   end
+
   end
 
   def hackerNews
-    #returns the top stories id
-    response = HTTParty.get('https://hacker-news.firebaseio.com/v0/topstories.json?print=pretty')
-    # returns the first 10 items in an Array
-    response.first(10)
-    binding.pry
+    response = HTTParty.get("#{ENV["HN_ID_API"]}")
+    if response.code == 200
+     ids = response.first(10) # returns the first 10 items in an Array
+     stories_response = ids.map{|id| HTTParty.get("https://hacker-news.firebaseio.com/v0/item/#{id}.json?print=pretty")}
+     render :json => stories_response
+    elsif
+      puts "Hacker_News : response code : #{response.code}, response message: #{response.message}"
+     end
+
+
 
   end
 

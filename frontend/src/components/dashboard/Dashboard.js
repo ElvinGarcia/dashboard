@@ -8,8 +8,8 @@ import { fetchHackerNews } from "../../actions/hackerNews";
 class Dashboard extends Component {
 
   componentDidMount() {
-    this.props.fetchHackerNews();
     this.props.fetchReddit();
+    this.props.fetchHackerNews();
   }
 
   render() {
