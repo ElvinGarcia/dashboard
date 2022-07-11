@@ -8,7 +8,8 @@ class Api::V1::SessionController < ApplicationController
    if response.code == 200
     render :json => response
    elsif
-    puts "Reddit : response code : #{response.code}, response message: #{response.message}"
+     puts "Reddit : response code : #{response.code}, response message: #{response.message}"
+     render :json => {error: response.message}
    end
 
   end
@@ -21,6 +22,7 @@ class Api::V1::SessionController < ApplicationController
      render :json => stories_response
     elsif
       puts "Hacker_News : response code : #{response.code}, response message: #{response.message}"
+       render :json => {error: response.message}
      end
 
 
