@@ -16,13 +16,14 @@ class FeedMenu extends Component{
     }
   }
 
-   handleFormSubmit = (event) => {
+  handleFormSubmit = (event) => {
     event.preventDefault();
-    console.log("handleFOrmSubmit",event.target.value);
+    // need refractoring `this.props.handleLogin(this.state)`
+    return this.state.login.username && this.state.login.password ? this.props.handleLogin(this.state) : console.log("a username and password combination are required!!")
   }
 
   handleFormChange = (event) => {
-    console.log(event.target.value)
+    this.setState({ login: { ...this.state.login, [event.target.name]: [event.target.value] } })
   }
 
   render() {
@@ -39,12 +40,13 @@ class FeedMenu extends Component{
       <ul className="dropdown-menu" aria-labelledby="dropdownMenuButton1">
 
 {/* FORM STARTS HERE */}
-          <form className="px-4 py-3" onSubmit={  this.handleFormSubmit   } >
+          <form className="px-4 py-3" onSubmit={  this.handleFormSubmit } >
     <div className="mb-3">
       <label htmlFor="exampleDropdownFormEmail1" className="form-label">Email address</label>
               <input type="email"
                 className="form-control"
                 id="exampleDropdownFormEmail1"
+                name="username"
                 placeholder="email@example.com"
                 value={this.state.login.username}
                 onChange={(e) => this.handleFormChange(e)}
@@ -55,6 +57,7 @@ class FeedMenu extends Component{
               <input type="password"
                 className="form-control"
                 id="exampleDropdownFormPassword1"
+                name="password"
                 placeholder="Password"
                 value={this.state.login.password}
                 onChange={(e)=>this.handleFormChange(e)}
