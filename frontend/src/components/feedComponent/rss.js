@@ -2,6 +2,11 @@ import React, {Component} from "react";
 import FeedMenu from '../menu/feedMenu'
 
 class Rss extends Component{
+
+  login = ({ username, password }) => {
+    console.log(`Logging in ${username} with password ${password}`);
+  };
+
   render() {
     if(Array.isArray(this.props.feeds)){
       return (
@@ -9,7 +14,7 @@ class Rss extends Component{
           <li
             className="list-group-item"
             key={obj.id}>
-            {< FeedMenu/>}
+            {< FeedMenu handleLogin={this.login}/>}
           <a href={obj.url} target="_blank" rel="noreferrer" >
             {obj.title}
           </a>
@@ -21,7 +26,7 @@ class Rss extends Component{
       return <li
         className="list-group-item"
         key={this.props.id}>
-        {< FeedMenu />}
+        {< FeedMenu handleLogin={this.login} />}
         <a href={this.props.url}
           target="_blank"
           rel="noreferrer" >

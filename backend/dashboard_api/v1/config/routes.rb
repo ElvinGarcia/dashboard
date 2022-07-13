@@ -4,9 +4,9 @@ Rails.application.routes.draw do
       resources :links
       resources :comments
       resources :users
-      resources :login, to: 'session#login'
-      get 'reddit.com/r/popular.json', to: 'session#reddit'
-      get 'hacker-news.firebaseio.com/v0/topstories.json', to: 'session#hackerNews'
+      resources :login, to: 'auth#login'
+      get 'reddit.com/r/popular.json', to: 'rss#reddit'
+      get 'hacker-news.firebaseio.com/v0/topstories.json', to: 'rss#hackerNews'
     end
   end
 
