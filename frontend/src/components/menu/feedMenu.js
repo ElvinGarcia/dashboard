@@ -19,14 +19,19 @@ class FeedMenu extends Component{
   }
 
   onSubmit = event => {
-    console.log("event ")
     event.preventDefault();
-    // need refractoring `this.props.handleLogin(this.state)`
-    return this.state.login.username && this.state.login.password ? this.props.handleLogin(this.state) : console.log("a username and password combination are required!!")
+    if (event.target.name === 'login') {
+      // {username:'fuzz', password:'buzz' }
+      return this.state.login.username && this.state.login.password ? this.props.handleLogin(this.state.login) : console.log("a username and password combination are required!!");
+    } else {
+      // {comment:"fizz", url:'buzz', urlid:'' }
+      return this.state.comments.comment && this.state.comments.url ? this.props.handleSubmission(this.state.comments) : console.log("a comment and url combination are required!!");
+    }
+
   }
 
   handleFormChange = (event) => {
-    this.setState({ login: { ...this.state.login, [event.target.name]: [event.target.value] } })
+    this.setState({ login: { ...this.state.login, [event.target.name]: event.target.value } })
   }
 
   render() {
@@ -43,7 +48,7 @@ class FeedMenu extends Component{
       <ul className="dropdown-menu" aria-labelledby="dropdownMenuButton1">
 
 {/* FORM STARTS HERE */}
-<form className="px-4 py-3" onSubmit={this.onSubmit} >
+          <form className="px-4 py-3" name="login" onSubmit={this.onSubmit} >
     <div className="mb-3">
       <label className="form-label">Email address</label>
               <input type="email"
@@ -85,7 +90,8 @@ class FeedMenu extends Component{
   <a className="dropdown-item" href="#null">New around here? Sign up</a>
   <a className="dropdown-item" href="#null">Forgot password?</a>
 
-  {/* comments form starts here Only when already logged in */}
+
+{/* comments form starts here Only when already logged in */}
 <form className="px-4 py-3" style={{ display: 'none' }} onSubmit={this.onSubmit}>
     <div className="mb-3" >
       <label htmlFor="comments" className="form-label">Comments</label>
