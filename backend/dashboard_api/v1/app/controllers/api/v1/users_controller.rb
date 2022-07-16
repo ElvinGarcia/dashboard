@@ -15,6 +15,9 @@ class Api::V1::UsersController < ApplicationController
 
   # POST /users
   def create
+binding.pry
+# password = params[:password]
+# username = params[:username]
     @user = User.new(user_params)
 
     if @user.save
