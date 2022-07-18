@@ -1,18 +1,24 @@
 import React, { Component } from "react"
 
 
-class FeedMenu extends Component{
+class FeedMenu extends Component {
   constructor(props) {
     super(props)
     this.state = {
-      login:{
-      username: "",
+      login: {
+        username: "",
         password: '',
+      },
+      reg: {
+        name: "",
+        email: "",
+        username:"",
+        password:""
       },
       comments: {
         comment: "",
         url: "",
-        urlid:""
+        urlid: ""
       }
 
     }
@@ -36,21 +42,23 @@ class FeedMenu extends Component{
 
   render() {
     return (
+      <>
       <span className="dropdown">
-      <button
-        className="btn btn-light dropdown-toggle"
-        type="button"
-        id="dropdownMenuButton1"
-        data-bs-toggle="dropdown"
-        aria-expanded="false"
-      >
-      </button>
-      <ul className="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+        <button
+          className="btn btn-light dropdown-toggle"
+          type="button"
+          id="dropdownMenuButton1"
+            data-bs-toggle="dropdown"
+            data-bs-auto-close="outside"
+          aria-expanded="false"
+        >
+        </button>
+        <ul className="dropdown-menu" aria-labelledby="dropdownMenuButton1">
 
-{/* FORM STARTS HERE */}
+          {/* FORM STARTS HERE */}
           <form className="px-4 py-3" name="login" onSubmit={this.onSubmit} >
-    <div className="mb-3">
-      <label className="form-label">Email address</label>
+            <div className="mb-3">
+              <label className="form-label">Email address</label>
               <input type="email"
                 className="form-control"
                 id="exampleDropdownFormEmail1 Username"
@@ -59,9 +67,9 @@ class FeedMenu extends Component{
                 value={this.state.login.username}
                 onChange={this.handleFormChange}
               />
-    </div>
-    <div className="mb-3">
-      <label  className="form-label">Password</label>
+            </div>
+            <div className="mb-3">
+              <label className="form-label">Password</label>
               <input type="password"
                 className="form-control"
                 id="exampleDropdownFormPassword1 password"
@@ -70,45 +78,117 @@ class FeedMenu extends Component{
                 value={this.state.login.password}
                 onChange={this.handleFormChange}
               />
-    </div>
-    <div className="mb-3">
-      <div className="form-check">
+            </div>
+            <div className="mb-3">
+              <div className="form-check">
                 <input type="checkbox"
                   className="form-check-input"
                   id="dropdownCheck"
                   onChange={this.handleFormChange}
                 />
-        <label className="form-check-label" htmlFor="dropdownCheck">
-          Remember me
-        </label>
-      </div>
-    </div>
-      <button type="submit" className="btn btn-primary">Sign in</button>
-</form>{/* END OF FORM */}
+                <label className="form-check-label" htmlFor="dropdownCheck">
+                  Remember me
+                </label>
+              </div>
+            </div>
+            <button type="submit" className="btn btn-primary">Sign in</button>
+          </form>{/* END OF FORM */}
+          <div className="dropdown-divider"></div>
+          <a className="dropdown-item" href="#null">Forgot password?</a>
+          <a href="##"
+            className="dropdown-toggle"
+            id="dropdownMenuClickableOutside"
+            data-bs-toggle="dropdown"
+            data-bs-auto-close="outside"
+            aria-expanded="false">
+            New around here? Sign up
+        </a>
+        <ul className="dropdown-menu" aria-labelledby="dropdownMenuButton2">
 
-  <div className="dropdown-divider"></div>
-  <a className="dropdown-item" href="#null">New around here? Sign up</a>
-  <a className="dropdown-item" href="#null">Forgot password?</a>
+
+    {/* new reg. start here*/}
+          {/*reg: {name: "",email: "",username:"",password:""}*/}
+          <form className="px-4 py-3" name="login" onSubmit={this.onSubmit} >
+            {/* name */}
+            <div className="mb-3">
+              <label className="form-label">Name</label>
+              <input type="username"
+                className="form-control"
+                id="exampleDropdownForm Username"
+                name="name"
+                placeholder="Name"
+                value={this.state.reg.name}
+                onChange={this.handleFormChange}
+              />
+            </div>
+
+            {/* username */}
+             <div className="mb-3">
+              <label className="form-label">Username</label>
+              <input type="username"
+                className="form-control"
+                id="exampleDropdownForm Username"
+                name="name"
+                placeholder="username"
+                value={this.state.reg.username}
+                onChange={this.handleFormChange}
+              />
+            </div>
+
+            {/* email  */}
+            <div className="mb-3">
+              <label className="form-label">Email address</label>
+              <input type="email"
+                className="form-control"
+                id="exampleDropdownFormEmail1 Username"
+                name="email"
+                placeholder="email@example.com"
+                value={this.state.reg.email}
+                onChange={this.handleFormChange}
+              />
+            </div>
+
+              {/* Password */}
+            <div className="mb-3">
+              <label className="form-label">Password</label>
+              <input type="password"
+                className="form-control"
+                id="exampleDropdownFormPassword1 password"
+                name="password"
+                placeholder="Password"
+                value={this.state.reg.password}
+                onChange={this.handleFormChange}
+              />
+            </div>
+            <button type="submit" className="btn btn-primary">Create Account</button>
+          </form>{/* END OF FORM */}
+         </ul>
+  {/* new reg. end here*/}
+          </ul>
+        </span>
+        <span>
+          <ul>
 
 
 {/* comments form starts here Only when already logged in */}
-<form className="px-4 py-3" style={{ display: 'none' }} onSubmit={this.onSubmit}>
-    <div className="mb-3" >
-      <label htmlFor="comments" className="form-label">Comments</label>
+          <form className="px-4 py-3" style={{ display: 'none' }} onSubmit={this.onSubmit}>
+            <div className="mb-3" >
+              <label htmlFor="comments" className="form-label">Comments</label>
               <input type="text"
                 className="form-control"
                 id="comments"
                 placeholder="your comments"
                 onChange={this.handleFormChange}
               />
-    </div>
-    <button type="submit" className="btn btn-primary">submit</button>
-</form>
-  </ul>
-    </span>
+            </div>
+            <button type="submit" className="btn btn-primary">submit</button>
+          </form>
 
-   )
- }
+          </ul>
+      </span>
+  </>
+    )
+  }
 }
 
 
