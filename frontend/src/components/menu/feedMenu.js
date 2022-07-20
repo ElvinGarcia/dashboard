@@ -40,6 +40,10 @@ class FeedMenu extends Component {
     this.setState({ login: { ...this.state.login, [event.target.name]: event.target.value } })
   }
 
+  handleFormRegChange = event => {
+    this.setState({ reg: { ...this.state.reg, [event.target.name]: event.target.value } })
+  }
+
   render() {
     return (
       <>
@@ -105,20 +109,19 @@ class FeedMenu extends Component {
         </a>
         <ul className="dropdown-menu" aria-labelledby="dropdownMenuButton2">
 
-
     {/* new reg. start here*/}
-          {/*reg: {name: "",email: "",username:"",password:""}*/}
-          <form className="px-4 py-3" name="login" onSubmit={this.onSubmit} >
-            {/* name */}
+        {/*reg: {name: "",email: "",username:"",password:""}*/}
+          <form className="px-4 py-3" name="reg" onSubmit={this.onSubmit} >
+        {/* name */}
             <div className="mb-3">
               <label className="form-label">Name</label>
               <input type="username"
                 className="form-control"
-                id="exampleDropdownForm Username"
+                id="uname"
                 name="name"
                 placeholder="Name"
                 value={this.state.reg.name}
-                onChange={this.handleFormChange}
+                onChange={this.handleFormRegChange}
               />
             </div>
 
@@ -127,11 +130,11 @@ class FeedMenu extends Component {
               <label className="form-label">Username</label>
               <input type="username"
                 className="form-control"
-                id="exampleDropdownForm Username"
-                name="name"
+                id="username"
+                name="username"
                 placeholder="username"
                 value={this.state.reg.username}
-                onChange={this.handleFormChange}
+                onChange={this.handleFormRegChange}
               />
             </div>
 
@@ -140,11 +143,11 @@ class FeedMenu extends Component {
               <label className="form-label">Email address</label>
               <input type="email"
                 className="form-control"
-                id="exampleDropdownFormEmail1 Username"
+                id="email"
                 name="email"
                 placeholder="email@example.com"
                 value={this.state.reg.email}
-                onChange={this.handleFormChange}
+                onChange={this.handleFormRegChange}
               />
             </div>
 
@@ -153,11 +156,11 @@ class FeedMenu extends Component {
               <label className="form-label">Password</label>
               <input type="password"
                 className="form-control"
-                id="exampleDropdownFormPassword1 password"
+                id="password"
                 name="password"
                 placeholder="Password"
                 value={this.state.reg.password}
-                onChange={this.handleFormChange}
+                onChange={this.handleFormRegChange}
               />
             </div>
             <button type="submit" className="btn btn-primary">Create Account</button>
