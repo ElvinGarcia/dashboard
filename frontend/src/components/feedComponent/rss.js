@@ -1,6 +1,6 @@
 import React, {Component} from "react";
 import FeedMenu from '../menu/feedMenu'
-import {login, } from '../../actions/apiCalls'
+import {login, register } from '../../actions/apiCalls'
 class Rss extends Component{
 
   login = ({ username, password }) => {
@@ -12,7 +12,9 @@ class Rss extends Component{
 
   };
 
-
+  handleRegistration = ({ name, email, username, password }) => {
+    register({ name, email, username, password })
+  };
 
   render() {
     if(Array.isArray(this.props.feeds)){
@@ -21,7 +23,7 @@ class Rss extends Component{
           <li
             className="list-group-item"
             key={obj.id}>
-            {< FeedMenu handleLogin={this.login} handleSubmission={this.submission} />}
+            {< FeedMenu handleLogin={this.login} handleRegistration={this.register} handleSubmission={this.submission} />}
           <a href={obj.url} target="_blank" rel="noreferrer" >
             {obj.title}
           </a>

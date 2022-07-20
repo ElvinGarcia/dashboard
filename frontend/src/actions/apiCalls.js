@@ -20,12 +20,12 @@ async function login({ username, password }) {
 
 
 
-async function register({ username, name, email }) {
+async function register({ name, email, username, password }) {
   // POST is used to hide data from the address bar
   const header = {
     method: "POST",
     headers: { "Content-Type": "application/json", },
-    body: JSON.stringify( {username,name,email} )
+    body: JSON.stringify( {name, email, username, password} )
   }
   // api/v1/users#create
   try {

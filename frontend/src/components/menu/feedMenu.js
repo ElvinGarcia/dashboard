@@ -29,7 +29,9 @@ class FeedMenu extends Component {
     if (event.target.name === 'login') {
       // {username:'fuzz', password:'buzz' }
       return this.state.login.username && this.state.login.password ? this.props.handleLogin(this.state.login) : console.log("a username and password combination are required!!");
-    } else {
+    } else if(event.target.name === 'reg') {
+      return this.state.reg.username && this.state.reg.name && this.state.reg.email && this.state.reg.password ? this.props.register(this.state.reg) : console.log("All Fields are required!!");
+    }else{
       // {comment:"fizz", url:'buzz', urlid:'' }
       return this.state.comments.comment && this.state.comments.url ? this.props.handleSubmission(this.state.comments) : console.log("a comment and url combination are required!!");
     }
@@ -40,7 +42,7 @@ class FeedMenu extends Component {
     this.setState({ login: { ...this.state.login, [event.target.name]: event.target.value } })
   }
 
-  handleFormRegChange = event => {
+  handleRegistration = event => {
     this.setState({ reg: { ...this.state.reg, [event.target.name]: event.target.value } })
   }
 
@@ -109,7 +111,7 @@ class FeedMenu extends Component {
         </a>
         <ul className="dropdown-menu" aria-labelledby="dropdownMenuButton2">
 
-    {/* new reg. start here*/}
+{/* new reg. start here*/}
         {/*reg: {name: "",email: "",username:"",password:""}*/}
           <form className="px-4 py-3" name="reg" onSubmit={this.onSubmit} >
         {/* name */}
@@ -121,7 +123,7 @@ class FeedMenu extends Component {
                 name="name"
                 placeholder="Name"
                 value={this.state.reg.name}
-                onChange={this.handleFormRegChange}
+                onChange={this.handleRegistration}
               />
             </div>
 
@@ -134,7 +136,7 @@ class FeedMenu extends Component {
                 name="username"
                 placeholder="username"
                 value={this.state.reg.username}
-                onChange={this.handleFormRegChange}
+                onChange={this.handleRegistration}
               />
             </div>
 
@@ -147,7 +149,7 @@ class FeedMenu extends Component {
                 name="email"
                 placeholder="email@example.com"
                 value={this.state.reg.email}
-                onChange={this.handleFormRegChange}
+                onChange={this.handleRegistration}
               />
             </div>
 
@@ -160,7 +162,7 @@ class FeedMenu extends Component {
                 name="password"
                 placeholder="Password"
                 value={this.state.reg.password}
-                onChange={this.handleFormRegChange}
+                onChange={this.handleRegistration}
               />
             </div>
             <button type="submit" className="btn btn-primary">Create Account</button>
