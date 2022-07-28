@@ -12,10 +12,7 @@ class Api::V1::AuthController < ApplicationController
     },
     status: :accepted
   else
-    render json:{
-      message: 'Invalid username or password',
-    },
-    status: :unauthorized
+    render json:{message: 'Invalid username or password',},status: :unauthorized
     end
   end
 

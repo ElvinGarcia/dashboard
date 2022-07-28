@@ -10,7 +10,7 @@ async function login({ username, password }) {
   }
   // api/v1/users#create
   try {
-    const resp = await fetch('/users', header)
+    const resp = await fetch('/login', header)
     const jsonResp = await resp.json()
     return console.log('jsonResp', jsonResp)
   } catch (error) {
@@ -25,13 +25,13 @@ async function register({ name, email, username, password }) {
   const header = {
     method: "POST",
     headers: { "Content-Type": "application/json", },
-    body: JSON.stringify( {name, email, username, password} )
+    body: JSON.stringify({ user: { name, email, username, password } } )
   }
   // api/v1/users#create
   try {
     const resp = await fetch('/users', header)
     const jsonResp = await resp.json()
-    return console.log('jsonResp', jsonResp)
+     console.log('this is the responce in JSON formatxs', jsonResp)
   } catch (error) {
     return console.log('an error occurred', error.message)
   }

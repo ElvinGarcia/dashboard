@@ -12,7 +12,7 @@ class Rss extends Component{
 
   };
 
-  handleRegistration = ({ name, email, username, password }) => {
+  registration = ({ name, email, username, password }) => {
     register({ name, email, username, password })
   };
 
@@ -23,7 +23,7 @@ class Rss extends Component{
           <li
             className="list-group-item"
             key={obj.id}>
-            {< FeedMenu handleLogin={this.login} handleRegistration={this.register} handleSubmission={this.submission} />}
+            {< FeedMenu handleLogin={this.login} handleRegistration={this.registration} handleSubmission={this.submission} />}
           <a href={obj.url} target="_blank" rel="noreferrer" >
             {obj.title}
           </a>

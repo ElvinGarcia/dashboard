@@ -1,5 +1,5 @@
 class Api::V1::UsersController < ApplicationController
-  before_action :set_user, only: %i[ show update destroy ]
+  # before_action :set_user, only: %i[ show update destroy ]
 
   # GET /users
   def index
@@ -15,15 +15,22 @@ class Api::V1::UsersController < ApplicationController
 
   # POST /users
   def create
-binding.pry
-# password = params[:password]
-# username = params[:username]
-    @user = User.new(user_params)
+  # password = params[:password]
+  # username = params[:username]
 
-    if @user.save
-      render json: @user, status: :created, location: @user
+
+    @user = User.new(user_params)
+    if @user.valid?
+      @token = encode_token(user_id:@user.id)
+      render json:{
+        user: UserSerializer.new(@user),
+        jwt: @token
+      },
+      status: :created
     else
-      render json: @user.errors, status: :unprocessable_entity
+      render json:{
+        error: @user.errors.full_messages[0]
+      }, status: :unprocessable_entity
     end
   end
 
@@ -42,6 +49,7 @@ binding.pry
   end
 
   private
+
     # Use callbacks to share common setup or constraints between actions.
     def set_user
       @user = User.find(params[:id])
@@ -49,6 +57,7 @@ binding.pry
 
     # Only allow a list of trusted parameters through.
     def user_params
-      params.require(:user).permit(:username)
+      params.require(:user).permit(:username, :email, :name, :password)
     end
 end
+

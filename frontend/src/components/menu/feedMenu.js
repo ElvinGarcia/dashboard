@@ -6,14 +6,14 @@ class FeedMenu extends Component {
     super(props)
     this.state = {
       login: {
-        username: "",
-        password: '',
+        username: "foo@bar.com",
+        password: "123",
       },
       reg: {
-        name: "",
-        email: "",
-        username:"",
-        password:""
+        name: "Bob",
+        email: "Bob@Bill.com",
+        username:"Bill",
+        password:"123"
       },
       comments: {
         comment: "",
@@ -25,13 +25,16 @@ class FeedMenu extends Component {
   }
 
   onSubmit = event => {
+
     event.preventDefault();
-    if (event.target.name === 'login') {
+    if (event.target.attributes.name.value === 'login') {
       // {username:'fuzz', password:'buzz' }
       return this.state.login.username && this.state.login.password ? this.props.handleLogin(this.state.login) : console.log("a username and password combination are required!!");
-    } else if(event.target.name === 'reg') {
-      return this.state.reg.username && this.state.reg.name && this.state.reg.email && this.state.reg.password ? this.props.register(this.state.reg) : console.log("All Fields are required!!");
-    }else{
+
+    } else if (event.target.attributes.name.value === 'reg') {
+      return this.state.reg.username && this.state.reg.name && this.state.reg.email && this.state.reg.password ? this.props.handleRegistration(this.state.reg) : console.log("All Fields are required!!");
+
+    } else {
       // {comment:"fizz", url:'buzz', urlid:'' }
       return this.state.comments.comment && this.state.comments.url ? this.props.handleSubmission(this.state.comments) : console.log("a comment and url combination are required!!");
     }
@@ -60,7 +63,7 @@ class FeedMenu extends Component {
         >
         </button>
         <ul className="dropdown-menu" aria-labelledby="dropdownMenuButton1">
-
+        <li><h6 className="dropdown-header">Sign in</h6></li>
           {/* FORM STARTS HERE */}
           <form className="px-4 py-3" name="login" onSubmit={this.onSubmit} >
             <div className="mb-3">
@@ -98,8 +101,10 @@ class FeedMenu extends Component {
               </div>
             </div>
             <button type="submit" className="btn btn-primary">Sign in</button>
-          </form>{/* END OF FORM */}
-          <div className="dropdown-divider"></div>
+            </form>{/* END OF FORM */}
+
+            <div className="dropdown-divider"></div>
+
           <a className="dropdown-item" href="#null">Forgot password?</a>
           <a href="##"
             className="dropdown-toggle"
@@ -110,7 +115,7 @@ class FeedMenu extends Component {
             New around here? Sign up
         </a>
         <ul className="dropdown-menu" aria-labelledby="dropdownMenuButton2">
-
+        <li><h6 className="dropdown-header">New Registration</h6></li>
 {/* new reg. start here*/}
         {/*reg: {name: "",email: "",username:"",password:""}*/}
           <form className="px-4 py-3" name="reg" onSubmit={this.onSubmit} >
@@ -176,7 +181,8 @@ class FeedMenu extends Component {
 
 
 {/* comments form starts here Only when already logged in */}
-          <form className="px-4 py-3" style={{ display: 'none' }} onSubmit={this.onSubmit}>
+            <form className="px-4 py-3" style={{ display: 'none' }} onSubmit={this.onSubmit}>
+            <li><h6 className="dropdown-header">Comments</h6></li>
             <div className="mb-3" >
               <label htmlFor="comments" className="form-label">Comments</label>
               <input type="text"
