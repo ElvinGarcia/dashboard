@@ -1,4 +1,5 @@
-
+import {setJwt, getlocalStorage } from "clientStorage";
+import setUser from "clientStorage";
 
 async function login({ username, password }) {
   // POST is used to hide data from the address bar
@@ -11,14 +12,14 @@ async function login({ username, password }) {
   // api/v1/users#create
   try {
     const resp = await fetch('/login', header)
-    const jsonResp = await resp.json()
-    return console.log('jsonResp', jsonResp)
+    const data = await resp.json()
+    console.log('data', data)
+    // save the token to localStorage for future access
+
   } catch (error) {
     return console.log('an error occurred', error.message)
   }
 }
-
-
 
 async function register({ name, email, username, password }) {
   // POST is used to hide data from the address bar
@@ -30,25 +31,30 @@ async function register({ name, email, username, password }) {
   // api/v1/users#create
   try {
     const resp = await fetch('/users', header)
-    const jsonResp = await resp.json()
-     console.log('this is the responce in JSON formatxs', jsonResp)
-  } catch (error) {
+    const data = await resp.json()
+    console.log('this is the responce in JSON formatxs', data)
+    setJwt(data);
+    setUser(data.user);
+    }
+   catch (error) {
     return console.log('an error occurred', error.message)
   }
 }
 
 
-
 async function comments({comment,url,urlid}){
   const header = {
     method: "POST",
-    headers: { "Content-Type": "application/json", },
+    headers: {
+      "Content-Type": "application/json",
+      "Authorization": `Bearer <token>`,
+    },
     body: JSON.stringify({comment,url,urlid})
   }
   try {
     const resp = await fetch(`/comments/${""}`, header)
-    const jsonResp = await resp.json()
-    return console.log('jsonResp', jsonResp)
+    const data = await resp.json()
+    return console.log('data', data)
   } catch (error) {
     return console.log('an error occurred', error.message)
   }
