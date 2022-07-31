@@ -1,11 +1,11 @@
 
 
 
- const setJwt =(obj)=> {
+ function setJwt(obj){
   return Object(obj).hasOwnProperty("jwt") ? localStorage.setItem("jwt",obj.jwt) : null
 }
 
-const getlocalStorage= (name) => {
+function getlocalStorage(name){
   return localStorage.getItem(name);
 }
 

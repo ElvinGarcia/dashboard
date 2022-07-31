@@ -12,7 +12,7 @@ import App from './App';
 // Dev-mode middleware was added to catch accidental mutations
 // The Redux DevTools Extension was automatically set up
 // The middleware and DevTools enhancers were composed together and added to the store
-const store = configureStore({reducer:rootReducer});
+export const store = configureStore({reducer:rootReducer});
 
 // returns an object with a render function
 const root = createRoot(document.querySelector('#root'));
