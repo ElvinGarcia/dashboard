@@ -1,20 +1,22 @@
 import { setJwt } from "./clientStorage";
 import {setUser} from "./user";
 
- async function login({ username, password }) {
+ async function login({ email, password }) {
   // POST is used to hide data from the address bar
   const header = {
       method: "POST",
     headers: { "Content-Type": "application/json", },
     credentials: 'same-origin',
-    body: JSON.stringify({ username, password })
+    body: JSON.stringify({user:{ email, password }})
   }
   // api/v1/users#create
   try {
     const resp = await fetch('/login', header)
     const data = await resp.json()
     console.log('data', data)
+    setJwt(data);
     // save the token to localStorage for future access
+    return setUser(data.user); // { id: null, username: "Bill", name: "Bob", email: "Bob@Bill.com" }
 
   } catch (error) {
     return console.log('an error occurred', error.message)
@@ -32,7 +34,7 @@ import {setUser} from "./user";
   try {
     const resp = await fetch('/users', header)
     const data = await resp.json();
-    console.log('this is the response in JSON format', data);
+    console.log('response', data);
     setJwt(data);
     return setUser(data.user); // { id: null, username: "Bill", name: "Bob", email: "Bob@Bill.com" }
     }

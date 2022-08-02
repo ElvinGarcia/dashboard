@@ -3,9 +3,9 @@ import FeedMenu from '../menu/feedMenu'
 import {login, register } from '../../actions/apiCalls'
 class Rss extends Component{
 
-  login = ({ username, password }) => {
+  login = ({ email, password }) => {
     // return { username, password };
-   login({ username, password })
+   login({ email, password })
   };
 
   submission = ({ comment, url, urlid }) => {

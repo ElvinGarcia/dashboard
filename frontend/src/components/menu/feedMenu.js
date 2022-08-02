@@ -6,14 +6,14 @@ class FeedMenu extends Component {
     super(props)
     this.state = {
       login: {
-        username: "foo@bar.com",
+        email: "foo@bar.com",
         password: "123",
       },
       reg: {
-        name: "Bob",
-        email: "Bob@Bill.com",
-        username:"Bill",
-        password:"123"
+        name: "",
+        email: "",
+        username:"",
+        password:""
       },
       comments: {
         comment: "",
@@ -28,8 +28,8 @@ class FeedMenu extends Component {
 
     event.preventDefault();
     if (event.target.attributes.name.value === 'login') {
-      // {username:'fuzz', password:'buzz' }
-      return this.state.login.username && this.state.login.password ? this.props.handleLogin(this.state.login) : console.log("a username and password combination are required!!");
+      // {email:'foo@bar.com', password:'123' }
+      return this.state.login.email && this.state.login.password ? this.props.handleLogin(this.state.login) : console.log("a email and password combination are required!!");
 
     } else if (event.target.attributes.name.value === 'reg') {
       return this.state.reg.username && this.state.reg.name && this.state.reg.email && this.state.reg.password ? this.props.handleRegistration(this.state.reg) : console.log("All Fields are required!!");
@@ -42,7 +42,7 @@ class FeedMenu extends Component {
   }
 
   handleFormChange = (event) => {
-    this.setState({ login: { ...this.state.login, [event.target.name]: event.target.value } })
+    this.setState({ login: { ...this.state.login, [event.target.email]: event.target.value } })
   }
 
   handleRegistration = event => {
@@ -71,9 +71,9 @@ class FeedMenu extends Component {
               <input type="email"
                 className="form-control"
                 id="exampleDropdownFormEmail1 Username"
-                name="username"
+                name="email"
                 placeholder="email@example.com"
-                value={this.state.login.username}
+                value={this.state.login.email}
                 onChange={this.handleFormChange}
               />
             </div>

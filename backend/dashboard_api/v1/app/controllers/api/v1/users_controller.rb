@@ -17,10 +17,9 @@ class Api::V1::UsersController < ApplicationController
   def create
   # password = params[:password]
   # username = params[:username]
-
-
     @user = User.new(user_params)
     if @user.valid?
+      @user.save
       @token = encode_token(user_id:@user.id)
       render json:{
         user: UserSerializer.new(@user),
@@ -30,7 +29,7 @@ class Api::V1::UsersController < ApplicationController
     else
       render json:{
         error: @user.errors.full_messages[0]
-      }, status: :unprocessable_entity
+      }, status: :unprocessable_entity, code: 406
     end
   end
 
