@@ -1,5 +1,7 @@
 import React, { Component } from "react"
-
+import LoginMenu from "./loginMenu"
+import CommentMenu from "./commentMenu"
+import {getlocalStorage} from '../../actions/clientStorage'
 
 class FeedMenu extends Component {
   constructor(props) {
@@ -61,140 +63,24 @@ class FeedMenu extends Component {
             data-bs-auto-close="outside"
           aria-expanded="false"
         >
-        </button>
-        <ul className="dropdown-menu" aria-labelledby="dropdownMenuButton1">
-        <li><h6 className="dropdown-header">Sign in</h6></li>
-          {/* FORM STARTS HERE */}
-          <form className="px-4 py-3" name="login" onSubmit={this.onSubmit} >
-            <div className="mb-3">
-              <label className="form-label">Email address</label>
-              <input type="email"
-                className="form-control"
-                id="exampleDropdownFormEmail1 Username"
-                name="email"
-                placeholder="email@example.com"
-                value={this.state.login.email}
-                onChange={this.handleFormChange}
-              />
-            </div>
-            <div className="mb-3">
-              <label className="form-label">Password</label>
-              <input type="password"
-                className="form-control"
-                id="exampleDropdownFormPassword1 password"
-                name="password"
-                placeholder="Password"
-                value={this.state.login.password}
-                onChange={this.handleFormChange}
-              />
-            </div>
-            <div className="mb-3">
-              <div className="form-check">
-                <input type="checkbox"
-                  className="form-check-input"
-                  id="dropdownCheck"
-                  onChange={this.handleFormChange}
-                />
-                <label className="form-check-label" htmlFor="dropdownCheck">
-                  Remember me
-                </label>
-              </div>
-            </div>
-            <button type="submit" className="btn btn-primary">Sign in</button>
-            </form>{/* END OF FORM */}
+          </button>
 
-            <div className="dropdown-divider"></div>
-
-          <a className="dropdown-item" href="#null">Forgot password?</a>
-          <a href="##"
-            className="dropdown-toggle"
-            id="dropdownMenuClickableOutside"
-            data-bs-toggle="dropdown"
-            data-bs-auto-close="outside"
-            aria-expanded="false">
-            New around here? Sign up
-        </a>
-        <ul className="dropdown-menu" aria-labelledby="dropdownMenuButton2">
-        <li><h6 className="dropdown-header">New Registration</h6></li>
-{/* new reg. start here*/}
-        {/*reg: {name: "",email: "",username:"",password:""}*/}
-          <form className="px-4 py-3" name="reg" onSubmit={this.onSubmit} >
-        {/* name */}
-            <div className="mb-3">
-              <label className="form-label">Name</label>
-              <input type="username"
-                className="form-control"
-                id="uname"
-                name="name"
-                placeholder="Name"
-                value={this.state.reg.name}
-                onChange={this.handleRegistration}
-              />
-            </div>
-
-            {/* username */}
-             <div className="mb-3">
-              <label className="form-label">Username</label>
-              <input type="username"
-                className="form-control"
-                id="username"
-                name="username"
-                placeholder="username"
-                value={this.state.reg.username}
-                onChange={this.handleRegistration}
-              />
-            </div>
-
-            {/* email  */}
-            <div className="mb-3">
-              <label className="form-label">Email address</label>
-              <input type="email"
-                className="form-control"
-                id="email"
-                name="email"
-                placeholder="email@example.com"
-                value={this.state.reg.email}
-                onChange={this.handleRegistration}
-              />
-            </div>
-
-              {/* Password */}
-            <div className="mb-3">
-              <label className="form-label">Password</label>
-              <input type="password"
-                className="form-control"
-                id="password"
-                name="password"
-                placeholder="Password"
-                value={this.state.reg.password}
-                onChange={this.handleRegistration}
-              />
-            </div>
-            <button type="submit" className="btn btn-primary">Create Account</button>
-          </form>{/* END OF FORM */}
-         </ul>
-  {/* new reg. end here*/}
-          </ul>
+          <LoginMenu
+            onSubmit={this.onSubmit}
+            loginEmail={this.state.login.email}
+            handleFormChange={this.handleFormChange}
+            loginPassword={this.state.login.password}
+            regName={this.state.reg.name}
+            handleRegistration={this.handleRegistration}
+            regUsername={this.state.reg.username}
+            regEmail={this.state.reg.email}
+            regPassword = {this.state.reg.password}
+          />
         </span>
         <span>
           <ul>
-
-
 {/* comments form starts here Only when already logged in */}
-            <form className="px-4 py-3" style={{ display: 'none' }} onSubmit={this.onSubmit}>
-            <li><h6 className="dropdown-header">Comments</h6></li>
-            <div className="mb-3" >
-              <label htmlFor="comments" className="form-label">Comments</label>
-              <input type="text"
-                className="form-control"
-                id="comments"
-                placeholder="your comments"
-                onChange={this.handleFormChange}
-              />
-            </div>
-            <button type="submit" className="btn btn-primary">submit</button>
-          </form>
-
+  <CommentMenu/>
           </ul>
       </span>
   </>
