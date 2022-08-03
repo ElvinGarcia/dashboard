@@ -4,6 +4,18 @@ class LoginMenu extends Component{
   render() {
     return (
       <>
+
+<span className="dropdown">
+        <button
+          className="btn btn-light dropdown-toggle"
+          type="button"
+          id="dropdownMenuButton1"
+            data-bs-toggle="dropdown"
+            data-bs-auto-close="outside"
+          aria-expanded="false"
+        >
+          </button>
+
         <ul className="dropdown-menu" aria-labelledby="dropdownMenuButton1" >
         <li><h6 className="dropdown-header">Sign in</h6></li>
           {/* FORM STARTS HERE */}
@@ -58,8 +70,9 @@ class LoginMenu extends Component{
         </a>
         <ul className="dropdown-menu" aria-labelledby="dropdownMenuButton2">
         <li><h6 className="dropdown-header">New Registration</h6></li>
-{/* new reg. start here*/}
-        {/*reg: {name: "",email: "",username:"",password:""}*/}
+
+  {/* new reg. start here*/}
+      {/*reg: {name: "",email: "",username:"",password:""}*/}
           <form className="px-4 py-3" name="reg" onSubmit={this.props.onSubmit} >
         {/* name */}
             <div className="mb-3">
@@ -117,7 +130,7 @@ class LoginMenu extends Component{
          </ul>
   {/* new reg. end here*/}
           </ul>
-
+</span>
       </>
     );
   };

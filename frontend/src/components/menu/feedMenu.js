@@ -8,8 +8,8 @@ class FeedMenu extends Component {
     super(props)
     this.state = {
       login: {
-        email: "foo@bar.com",
-        password: "123",
+        email: process.env.REACT_APP_EMAIL,
+        password: process.env.REACT_APP_PASSWORD,
       },
       reg: {
         name: "",
@@ -54,17 +54,7 @@ class FeedMenu extends Component {
   render() {
     return (
       <>
-      <span className="dropdown">
-        <button
-          className="btn btn-light dropdown-toggle"
-          type="button"
-          id="dropdownMenuButton1"
-            data-bs-toggle="dropdown"
-            data-bs-auto-close="outside"
-          aria-expanded="false"
-        >
-          </button>
-
+      {/* LoginMenu form starts here Only when not already logged in */}
           <LoginMenu
             onSubmit={this.onSubmit}
             loginEmail={this.state.login.email}
@@ -76,13 +66,8 @@ class FeedMenu extends Component {
             regEmail={this.state.reg.email}
             regPassword = {this.state.reg.password}
           />
-        </span>
-        <span>
-          <ul>
-{/* comments form starts here Only when already logged in */}
-  <CommentMenu/>
-          </ul>
-      </span>
+      {/* comments form starts here Only when already logged in */}
+       <CommentMenu/>
   </>
     )
   }
