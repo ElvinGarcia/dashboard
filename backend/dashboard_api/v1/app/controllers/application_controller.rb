@@ -1,6 +1,6 @@
 class ApplicationController < ActionController::API
   include HTTParty
-  #before_action :authorized
+  before_action :authorized
 
 def encode_token(payload)
   private_key = OpenSSL::PKey::RSA.new 2048
@@ -17,6 +17,7 @@ def decode_token(token)
 end
 
 def current_user
+  binding.pry
 
 end
 

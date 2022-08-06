@@ -1,5 +1,4 @@
-import { setJwt } from "./clientStorage";
-import {setUser} from "./user";
+import {setJwt,getJwt, setUser} from "./user";
 
  async function login({ email, password }) {
   // POST is used to hide data from the address bar
@@ -44,17 +43,18 @@ import {setUser} from "./user";
 }
 
 
- async function comments({comment,url,urlid}){
+async function comments({ comment, url, id }) {
+
   const header = {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
-      "Authorization": `Bearer <token>`,
+      "Authorization": `Bearer ${getJwt()}`,
     },
-    body: JSON.stringify({comment,url,urlid})
+    body: JSON.stringify({comment:{comment,url,id}})
   }
   try {
-    const resp = await fetch(`/comments/${""}`, header)
+    const resp = await fetch(`/comments/`, header)
     const data = await resp.json()
     return console.log('data', data)
   } catch (error) {

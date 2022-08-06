@@ -1,15 +1,16 @@
 import React, {Component} from "react";
 import FeedMenu from '../menu/feedMenu'
-import {login, register } from '../../actions/apiCalls'
-class Rss extends Component{
+import {login, register,comments } from '../../actions/apiCalls'
 
+
+class Rss extends Component{
   login = ({ email, password }) => {
-    // return { username, password };
    login({ email, password })
   };
 
-  submission = ({ comment, url, urlid }) => {
-
+  submission = ({ comment, url, id }) => {
+    //{ comment: "test", url: "example.com", id: "32363854" }
+    comments({ comment, url, id })
   };
 
   registration = ({ name, email, username, password }) => {
@@ -19,11 +20,17 @@ class Rss extends Component{
   render() {
     if(Array.isArray(this.props.feeds)){
       return (
-        <ul className="col-sm-4 list-group">{this.props.feeds.map(obj =>
+        <ul className="col-md-5 list-group">{this.props.feeds.map(obj =>
           <li
             className="list-group-item"
             key={obj.id}>
-            {< FeedMenu handleLogin={this.login} handleRegistration={this.registration} handleSubmission={this.submission} />}
+            {< FeedMenu
+              handleLogin={this.login}
+              handleRegistration={this.registration}
+              handleSubmission={this.submission}
+              url={obj.url}
+              id={obj.id}
+            />}
           <a href={obj.url} target="_blank" rel="noreferrer" >
             {obj.title}
           </a>

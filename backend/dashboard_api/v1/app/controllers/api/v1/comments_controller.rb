@@ -15,6 +15,8 @@ class Api::V1::CommentsController < ApplicationController
 
   # POST /comments
   def create
+    binding.pry
+
     @comment = Comment.new(comment_params)
 
     if @comment.save
@@ -46,6 +48,7 @@ class Api::V1::CommentsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def comment_params
-      params.require(:comment).permit(:body)
+      # {"comment"=>"test", "url"=>"example.com", "id"=>"12345"} permitted: true>
+      params.require(:comment).permit(:comment,:url,:id)
     end
 end

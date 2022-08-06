@@ -8,5 +8,21 @@ function setUser(obj) {
   })
 }
 
+function setJwt(obj){
+  return Object(obj).hasOwnProperty("jwt") ? localStorage.setItem("jwt",obj.jwt) : null
+}
 
-export {setUser}
+function getJwt() {
+  return localStorage.getItem('jwt');
+}
+
+function getlocalStorage(name) {
+  return localStorage.getItem(name);
+}
+
+function isLoggedIn() {
+  return !!getlocalStorage("jwt")
+
+}
+export { setJwt, getlocalStorage,setUser, isLoggedIn,getJwt }
+

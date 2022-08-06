@@ -5,6 +5,7 @@ import { configureStore } from '@reduxjs/toolkit'; // replaces createStore.
 import { Provider } from 'react-redux'; // use to pass state between components and containers
 import rootReducer from "./reducers/rootReducer"; // main state reducer
 import App from './App';
+// import {isLoggedIn} from './actions/user'
 
 
 // The slice reducers were automatically passed to combineReducers()
@@ -23,7 +24,3 @@ root.render(
   </BrowserRouter>
 </Provider>
   )
-
-
-
-
