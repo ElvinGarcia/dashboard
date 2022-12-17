@@ -1,5 +1,4 @@
 class Api::V1::CommentsController < ApplicationController
-  before_action :set_comment, only: %i[ show update destroy ]
 
   # GET /comments
   def index
@@ -16,9 +15,9 @@ class Api::V1::CommentsController < ApplicationController
   # POST /comments
   def create
     binding.pry
-
-    @comment = Comment.new(comment_params)
-
+    @link = Link.create(link_params)
+    @comment = current_user.comments.build(comment_params)
+    @comment.links.build(@link)
     if @comment.save
       render json: @comment, status: :created, location: @comment
     else
@@ -49,6 +48,11 @@ class Api::V1::CommentsController < ApplicationController
     # Only allow a list of trusted parameters through.
     def comment_params
       # {"comment"=>"test", "url"=>"example.com", "id"=>"12345"} permitted: true>
-      params.require(:comment).permit(:comment,:url,:id)
+      params.require(:comment).permit(:body,:id)
+    end
+
+    def link_params
+      # {"comment"=>"test", "url"=>"example.com", "id"=>"12345"} permitted: true>
+      params.require(:comment).permit(:url)
     end
 end

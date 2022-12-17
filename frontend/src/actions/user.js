@@ -14,6 +14,7 @@ function setJwt(obj){
 
 function getJwt() {
   return localStorage.getItem('jwt');
+//  return localStorage.getItem('jwt') || false
 }
 
 function getlocalStorage(name) {

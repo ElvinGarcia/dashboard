@@ -2,8 +2,8 @@ import React, { Component } from "react"
 import { connect } from "react-redux";
 import Rss from "../feedComponent/rss";
 import {loadingAnimation} from "../body/loading"
-import { fetchReddit } from "../../actions/reddit";
-import { fetchHackerNews } from "../../actions/hackerNews";
+import { fetchReddit, fetchHackerNews } from "../../actions/rssFeed";
+
 
 class Dashboard extends Component {
 

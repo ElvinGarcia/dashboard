@@ -1,5 +1,5 @@
 class Api::V1::LinksController < ApplicationController
-  before_action :set_link, only: %i[ show update destroy ]
+  skip_before_action :authorized, only: [:login]
 
   # GET /links
   def index

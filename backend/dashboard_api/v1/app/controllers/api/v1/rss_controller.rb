@@ -1,7 +1,5 @@
 class Api::V1::RssController < ApplicationController
-  def login
-
-  end
+  skip_before_action :authorized, only: [:reddit, :hackerNews]
 
   def reddit
     @response = HTTParty.get("#{ENV["REDDIT_API"]}")
@@ -24,9 +22,6 @@ class Api::V1::RssController < ApplicationController
       puts "Hacker_News : response code : #{@response.code}, response message: #{@response.message}"
        render :json => {error: @resp.message}
      end
-
-
-
   end
 
 end
